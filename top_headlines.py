@@ -1,6 +1,7 @@
 import datetime
 from flask import Flask, render_template, url_for
 import  requests
+from secrets_example import api_key
 
 app = Flask(__name__, static_url_path='/static')
 
@@ -43,7 +44,7 @@ def hello_name_section(nm, section):
 def find_top_article(section):
     base_url = 'https://api.nytimes.com/svc/topstories/v2/{}.json'.format(section)
     print(base_url)
-    params = { 'api-key': "dffca63f6deb4c019567247bbd8c1b41",
+    params = { 'api-key': api_key,
                'section': section
                }
     results = requests.get(base_url, params).json()['results']
